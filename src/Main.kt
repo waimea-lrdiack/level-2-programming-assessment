@@ -7,13 +7,37 @@
  * GitHub Repo:    https://github.com/waimea-lrdiack/level-2-programming-assessment
  * ---------------------------------------------------------------------
  * Notes:
- * PROJECT NOTES HERE
+ *
+ * Set up the grid for Old Gold
  * =====================================================================
  */
 
+/**
+ * Constant vales used to define the key values used throughout the device
+ */
 
+const val NUMGRIDS = 20
+const val EMPTY = ""
 
 fun main() {
-    println("Hello World!")
+    val grids = setUpGrids()
+
+    showGrids(grids)
 }
 
+fun setUpGrids(): MutableList<String> {
+    val gridList = mutableListOf<String>()
+    for (grids in 1..NUMGRIDS) gridList.add(EMPTY)
+    return gridList
+}
+
+fun showGrids(gridList: List<String>) {
+
+    // creates the divider line
+    val divider = "+--------".repeat(gridList.size) + "+"
+
+    println(divider)
+    for (grid in 0..<gridList.size) print("| ${grid + 1} ")
+    println("|")
+    println(divider)
+}
