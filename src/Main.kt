@@ -23,8 +23,6 @@ fun main() {
     val grids = setUpGrids()
 
     showGrids(grids)
-
-    println("Hello World!")
 }
 
 fun setUpGrids(): MutableList<String> {
@@ -37,9 +35,5 @@ fun showGrids(gridList: List<String>) {
 
     // creates the divider line
     val divider = "+--------".repeat(gridList.size) + "+"
-
-    println(divider)
-    for ((i, grid) in gridList.withIndex()) print("| ${grid.padEnd(6)} ")
-    println("|")
-    println(divider)
+    
 }
