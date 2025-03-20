@@ -20,9 +20,14 @@ const val NUMGRIDS = 20
 const val EMPTY = ""
 
 fun main() {
+    println("Setting up grids")
+
     val grids = setUpGrids()
+    println()
 
     showGrids(grids)
+    println()
+
 }
 
 fun setUpGrids(): MutableList<String> {
