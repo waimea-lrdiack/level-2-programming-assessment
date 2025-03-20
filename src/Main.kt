@@ -37,7 +37,7 @@ fun showGrids(gridList: List<String>) {
     val divider = "+--------".repeat(gridList.size) + "+"
 
     println(divider)
-    for (grid in 0..<gridList.size) print("| ${grid + 1} ")
+    for ((i, grid) in gridList.withIndex()) print("| ${grid.padEnd(6)} ")
     println("|")
     println(divider)
 }
