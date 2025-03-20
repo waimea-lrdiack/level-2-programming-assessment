@@ -23,6 +23,8 @@ fun main() {
     val grids = setUpGrids()
 
     showGrids(grids)
+
+    println("Hello World!")
 }
 
 fun setUpGrids(): MutableList<String> {
