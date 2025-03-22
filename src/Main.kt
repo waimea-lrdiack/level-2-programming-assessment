@@ -49,11 +49,12 @@ fun setUpGrids(): MutableList<String> {
 
 fun showGrids(gridList: List<String>) {
 
-    // creates the divider line
-    val divider = "+-----------".repeat(gridList.size) + "+"
+    val gridWidth = 11  // sets the width of the grids (set to 11 due to Gold Coin taking up 9 spaces)
+
+    val divider = "+${"-".repeat(gridWidth)}".repeat(gridList.size) + "+" // repeats the +----------+ pattern
 
     println(divider)
-    for ((i, grid) in gridList.withIndex()) print("| ${grid.padEnd(8)} ")
+    for (grid in gridList) print("| ${grid.padEnd(gridWidth - 2)} ")
     println("|")
     println(divider)
 }
@@ -63,7 +64,7 @@ fun placeCoinInGrid(gridList: MutableList<String>, gridNum: Int, coin: String) {
     if (gridNum !in 1..NUMGRIDS) return
     // Check for blank name
     if (coin.isBlank()) return
-    // Ok to go ahead and place the monkey
+    // Ok to go ahead and place the coin
     println("+++ Putting $coin into grid $gridNum")
     gridList[gridNum - 1] = coin
 }
