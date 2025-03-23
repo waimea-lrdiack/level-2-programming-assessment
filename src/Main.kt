@@ -28,16 +28,12 @@ fun main() {
     showGrids(grids)
     println()
 
-    println("Placing existing monkeys into cages...")
+    println("Placing coins randomly")
 
-    placeCoinInGrid(grids, 1, "Coin 1")
-    placeCoinInGrid(grids, 8, "Coin 2")
-    placeCoinInGrid(grids, 3, "Coin 3")
-    placeCoinInGrid(grids, 5, "Coin 4")
-    placeCoinInGrid(grids, 6, "Gold Coin")
+    val coins = listOf("Coin 1", "Coin 2", "Coin 3", "Coin 4", "Gold Coin")
+    placeCoins(grids, coins)
 
     println()
-
     showGrids(grids)
 }
 
@@ -59,12 +55,17 @@ fun showGrids(gridList: List<String>) {
     println(divider)
 }
 
-fun placeCoinInGrid(gridList: MutableList<String>, gridNum: Int, coin: String) {
-    // Check for invalid cage number
-    if (gridNum !in 1..NUMGRIDS) return
-    // Check for blank name
-    if (coin.isBlank()) return
-    // Ok to go ahead and place the coin
-    println("+++ Putting $coin into grid $gridNum")
-    gridList[gridNum - 1] = coin
+fun placeCoins(gridList: MutableList<String>, coins: List<String>) {
+
+    val randomize = (gridList.indices).shuffled()  // shuffles the list, so that the coin is placed into a random grid
+
+    for ((index, coin) in coins.withIndex()) {
+        val place = randomize[index] // place will make another value be put into the random position
+
+        // due to lists starting at 0, the grid the coin is placed in will be one more than its index, gridNum is used to show the user which grid the coin is in.
+        val gridNum = place +1
+
+        println("+++ Placing $coin in grid $gridNum")
+        gridList[place] = coin // the coin is placed into the grid
+    }
 }
