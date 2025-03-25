@@ -1,3 +1,5 @@
+import java.util.Scanner
+
 /**
  * =====================================================================
  * Programming Project for NCEA Level 2, Standard 91896
@@ -25,16 +27,42 @@ fun main() {
     val grids = setUpGrids()
     println()
 
-    showGrids(grids)
+    showGrids(grids) // using the showGrids function the grids are shown the user
     println()
 
     println("Placing coins randomly")
 
-    val coins = listOf("Coin 1", "Coin 2", "Coin 3", "Coin 4", "Gold Coin")
-    placeCoins(grids, coins)
+    val coins = listOf("Coin 1", "Coin 2", "Coin 3", "Coin 4", "Gold Coin") // adds the coins to the game
+    placeCoins(grids, coins) // coins are placed into the grids
 
     println()
     showGrids(grids)
+
+    val player1 = getString("Player 1, what is your name? ") // gets users name
+    val player2 = getString("Player 2, what is your name? ")
+
+    println("Welcome $player1 and $player2 to the OLD GOLD game") // tells players what to do
+    println("Enter 1 to move Coin 1")
+    println("Enter 2 to move Coin 2")
+    println("Enter 3 to move Coin 3")
+    println("Enter 4 to move Coin 4")
+    println("Enter G to move the Gold Coin")
+    println("Enter Q to quit the game")
+
+    while (true) {
+        showGrids(grids)
+
+        val playerInput = getUserInput()
+
+        when (playerInput) {
+            'Q' -> break
+            '1' -> moveCoin(grids, "Coin 1")
+            '2' -> moveCoin(grids, "Coin 2")
+            '3' -> moveCoin(grids, "Coin 3")
+            '4' -> moveCoin(grids, "Coin 4")
+            'G' -> moveCoin(grids, "Gold Coin")
+        }
+    }
 }
 
 fun setUpGrids(): MutableList<String> {
@@ -67,5 +95,55 @@ fun placeCoins(gridList: MutableList<String>, coins: List<String>) {
 
         println("+++ Placing $coin in grid $gridNum")
         gridList[place] = coin // the coin is placed into the grid
+    }
+}
+
+fun getString(prompt: String): String {
+    var userInput: String
+
+    while(true) {
+        print(prompt)
+
+        userInput = readln()
+        if (userInput.isNotBlank()) break
+    }
+
+    return userInput
+}
+
+fun getUserInput(): Char {
+    val validChoices = "1234GQ"
+
+    while (true) {
+        println("What do you want to do?: ")
+        val input = readln()
+        // typed nothing? try again
+        if (input.isBlank()) continue
+        // grab the first letter
+        val choice = input.uppercase().first()
+
+        // check for a valid option
+        if (validChoices.contains(choice)) return choice
+    }
+}
+
+fun moveCoin(gridList: MutableList<String>, coinName: String) {
+    val coinIndex = gridList.indexOf(coinName) // Find the coin's position
+
+    if (coinIndex == -1) {
+        println("Error: $coinName is not found on the board!")
+        return
+    }
+
+    if (coinIndex == 0) {
+        gridList[coinIndex] = EMPTY
+        println("$coinName has been removed!")
+        return
+    }
+
+    else {
+        gridList[coinIndex - 1] = coinName  // Place it one grid to the left
+
+        println("Moved $coinName to Grid ${coinIndex}")
     }
 }
