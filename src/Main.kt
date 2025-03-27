@@ -1,4 +1,3 @@
-import java.util.Scanner
 
 /**
  * =====================================================================
@@ -141,14 +140,14 @@ fun moveCoin(gridList: MutableList<String>, coinName: String) {
         return
     }
 
-    if (gridList[coinIndex - 1] != EMPTY) {  // Check if the left grid is occupied
-        println("Cannot move $coinName left! Grid ${coinIndex} is already occupied.")
+    if (gridList[coinIndex - 1] != EMPTY) {  // Check if the left grid is occupied and if so won't allow them to move the coin
+        println("Cannot move $coinName left! Grid $coinIndex is already occupied.")
         return
     }
 
     else {
         gridList[coinIndex] = EMPTY // The coin will be removed from its original spot in the list so it can be moved to a new one
         gridList[coinIndex - 1] = coinName  // Place it one grid to the left
-        println("Moved $coinName to Grid ${coinIndex}")
+        println("Moved $coinName to Grid $coinIndex")
     }
 }
