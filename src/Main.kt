@@ -40,17 +40,27 @@ fun main() {
     val player1 = getString("Player 1, what is your name? ") // gets users name
     val player2 = getString("Player 2, what is your name? ")
 
+    val players = listOf(player1, player2)
+    var currentPlayer = 0  // Track the current player (0 = Player 1, 1 = Player 2)
+
     println("Welcome $player1 and $player2 to the OLD GOLD game") // tells players what to do
+    println()
     println("Enter 1 to move Coin 1")
+    println()
     println("Enter 2 to move Coin 2")
+    println()
     println("Enter 3 to move Coin 3")
+    println()
     println("Enter 4 to move Coin 4")
+    println()
     println("Enter G to move the Gold Coin")
+    println()
     println("Enter Q to quit the game")
 
     while (true) {
-        showGrids(grids)
-
+        showGrids(grids) // shows the grids so the players will see changes
+        println()
+        println("It's ${players[currentPlayer]}'s turn!") // Show whose turn it is
         val playerInput = getUserInput()
 
         when (playerInput) {
@@ -61,6 +71,8 @@ fun main() {
             '4' -> moveCoin(grids, "Coin 4")
             'G' -> moveCoin(grids, "Gold Coin")
         }
+
+        currentPlayer = (currentPlayer + 1) % 2 // change to the other player when turn is done (%2 makes it so that the current player will only be able to alternate between 0,1)
     }
 }
 
