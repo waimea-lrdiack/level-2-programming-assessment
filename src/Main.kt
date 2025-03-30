@@ -9,7 +9,14 @@
  * ---------------------------------------------------------------------
  * Notes:
  *
- * Set up the grid for Old Gold
+ * Set up and show the grid for Old Gold
+ * Add coins into the game
+ * Make the coins position random
+ * Allow players to move the coins to the left
+ * If a coin is in the first grid it can then be removed
+ * Make sure the coins cannot be moved into a grid another coin is in or go over another coin.
+ * To do: Allow the user to move the coin as far as they want
+ * To do: declare a winner if gold coin is removed
  * =====================================================================
  */
 
