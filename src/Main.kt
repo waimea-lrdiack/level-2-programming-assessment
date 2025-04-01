@@ -44,11 +44,11 @@ fun main() {
     println()
     showGrids(grids)
 
-    val player1 = getString("Player 1, what is your name? ") // gets users name
-    val player2 = getString("Player 2, what is your name? ")
+    val player1 = getPlayerName("Player 1, what is your name? ") // gets users name
+    val player2 = getPlayerName("Player 2, what is your name? ")
 
     val players = listOf(player1, player2)
-    var currentPlayer = 0  // Track the current player (0 = Player 1, 1 = Player 2)
+    var currentPlayerNumber = 0  // Track the current player (0 = Player 1, 1 = Player 2)
 
     println("Welcome $player1 and $player2 to the OLD GOLD game") // tells players what to do
     println()
@@ -67,25 +67,30 @@ fun main() {
     while (true) {
         showGrids(grids) // shows the grids so the players will see changes
         println()
-        println("It's ${players[currentPlayer]}'s turn!") // Show whose turn it is
+
+        val currentPlayer = players[currentPlayerNumber]
+        println("It's $currentPlayer's turn!") // Show whose turn it is
+
         val playerInput = getUserInput()
 
-        when (playerInput) {
-            'Q' -> break
-            '1' -> moveCoin(grids, "Coin 1")
-            '2' -> moveCoin(grids, "Coin 2")
-            '3' -> moveCoin(grids, "Coin 3")
-            '4' -> moveCoin(grids, "Coin 4")
-            'G' -> moveCoin(grids, "Gold Coin")
+        if (playerInput == 'Q') break // Quit game
+        val coinToMove = when (playerInput) {
+            '1' -> "Coin 1"
+            '2' -> "Coin 2"
+            '3' -> "Coin 3"
+            '4' -> "Coin 4"
+            'G' -> "Gold Coin"
+            else -> continue
         }
+        moveCoin(grids, coinToMove, currentPlayer)
 
-        currentPlayer = (currentPlayer + 1) % 2 // change to the other player when turn is done (%2 makes it so that the current player will only be able to alternate between 0,1)
+        currentPlayerNumber = (currentPlayerNumber + 1) % 2 // change to the other player when turn is done (%2 makes it so that the current player will only be able to alternate between 0,1)
     }
 }
 
 fun setUpGrids(): MutableList<String> {
     val gridList = mutableListOf<String>()
-    for (grids in 1..NUMGRIDS) gridList.add(EMPTY)
+    for (grids in 1..NUMGRIDS) gridList.add(EMPTY) // makes every grid in the list empty
     return gridList
 }
 
@@ -96,7 +101,7 @@ fun showGrids(gridList: List<String>) {
     val divider = "+${"-".repeat(gridWidth)}".repeat(gridList.size) + "+" // repeats the +----------+ pattern
 
     println(divider)
-    for (grid in gridList) print("| ${grid.padEnd(gridWidth - 2)} ")
+    for (grid in gridList) print("| ${grid.padEnd(gridWidth - 2)} ") // will print a line that looks like this |      | so that the coins fit in between and the line add up with the +
     println("|")
     println(divider)
 }
@@ -116,7 +121,7 @@ fun placeCoins(gridList: MutableList<String>, coins: List<String>) {
     }
 }
 
-fun getString(prompt: String): String {
+fun getPlayerName(prompt: String): String {
     var userInput: String
 
     while(true) {
@@ -133,7 +138,7 @@ fun getUserInput(): Char {
     val validChoices = "1234GQ"
 
     while (true) {
-        println("What do you want to do?: ")
+        println("What coin do you want to move?: ")
         val input = readln()
         // typed nothing? try again
         if (input.isBlank()) continue
@@ -145,15 +150,15 @@ fun getUserInput(): Char {
     }
 }
 
-fun moveCoin(gridList: MutableList<String>, coinName: String) {
+fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: String) {
     val coinIndex = gridList.indexOf(coinName) // Find the coin's position
 
-    if (coinIndex == -1) {
+    if (coinIndex == -1) { // since when a coin is removed its index becomes -1, this error message is played
         println("Error: $coinName is not found on the board!")
         return
     }
 
-    if (coinIndex == 0) {
+    if (coinIndex == 0) { // if the coin is in grid 1 ( 0 in the list), their position becomes empty
         gridList[coinIndex] = EMPTY
         println("$coinName has been removed!")
         return
@@ -164,9 +169,26 @@ fun moveCoin(gridList: MutableList<String>, coinName: String) {
         return
     }
 
-    else {
-        gridList[coinIndex] = EMPTY // The coin will be removed from its original spot in the list so it can be moved to a new one
-        gridList[coinIndex - 1] = coinName  // Place it one grid to the left
-        println("Moved $coinName to Grid $coinIndex")
+    println("$currentPlayer, how many spaces do you want to move $coinName?")
+    val movedSpaces = readln().toIntOrNull() ?: return // gets the number of grids the player wants to move the coin
+
+    val newPosition = coinIndex - movedSpaces // since the coin moves left taking away the coins original position by the moved spaces gives the new position.
+
+    if (newPosition < 0) { // prevents coins from moving past grid 1
+        println("You can't move past Grid 1!")
+        return
     }
+
+    for (i in newPosition until coinIndex) {
+        if (gridList[i] != EMPTY) {
+            println("Cannot move! Another coin is in the way at Grid ${i + 1}.")
+            return
+        }
+    }
+
+
+    gridList[coinIndex] = EMPTY // The coin will be removed from its original spot in the list so it can be moved to a new one
+    gridList[newPosition] = coinName  // Place the coin into the new position
+    println("Moved $coinName to Grid $coinIndex")
+
 }
