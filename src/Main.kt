@@ -15,7 +15,8 @@
  * Allow players to move the coins to the left
  * If a coin is in the first grid it can then be removed
  * Make sure the coins cannot be moved into a grid another coin is in or go over another coin.
- * To do: Allow the user to move the coin as far as they want
+ * Allow the user to move the coin as far as they want
+ * Check for errors: negative numbers, overlap
  * To do: declare a winner if gold coin is removed
  * =====================================================================
  */
@@ -38,7 +39,7 @@ fun main() {
 
     println("Placing coins randomly")
 
-    val coins = listOf("Coin 1", "Coin 2", "Coin 3", "Coin 4", "Gold Coin") // adds the coins to the game
+    val coins = listOf("Coin 1", "Coin 2", "Coin 3", "Coin 4", "Gold") // adds the coins to the game
     placeCoins(grids, coins) // coins are placed into the grids
 
     println()
@@ -79,7 +80,7 @@ fun main() {
             '2' -> "Coin 2"
             '3' -> "Coin 3"
             '4' -> "Coin 4"
-            'G' -> "Gold Coin"
+            'G' -> "Gold"
             else -> continue
         }
         moveCoin(grids, coinToMove, currentPlayer)
@@ -96,7 +97,7 @@ fun setUpGrids(): MutableList<String> {
 
 fun showGrids(gridList: List<String>) {
 
-    val gridWidth = 11  // sets the width of the grids (set to 11 due to Gold Coin taking up 9 spaces)
+    val gridWidth = 8  // sets the width of the grids (set to 11 due to Gold Coin taking up 9 spaces)
 
     val divider = "+${"-".repeat(gridWidth)}".repeat(gridList.size) + "+" // repeats the +----------+ pattern
 
@@ -165,7 +166,7 @@ fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: Str
     }
 
     if (gridList[coinIndex - 1] != EMPTY) {  // Check if the left grid is occupied and if so won't allow them to move the coin
-        println("Cannot move $coinName left! Grid $coinIndex is already occupied.")
+        println("Cannot move $coinName, Grid $coinIndex is already occupied.")
         return
     }
 

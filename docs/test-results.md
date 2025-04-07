@@ -4,15 +4,17 @@ The test results show the actual outcome of the testing, following the [Test Pla
 
 ---
 
-## Example Test Name
+## Testing Coin Placement
 
-Example test description. Example test description.Example test description. Example test description.Example test description. Example test description.
+I need to make sure that coins are placed on the grid correctly
 
-### Test Data Used
+### Test Data To Use
 
-Details of test data. Details of test data. Details of test data. Details of test data. Details of test data. Details of test data. Details of test data.
+I will run the game multiple times to see how the coins get placed
 
-### Test Result
+### Expected Test Result
+
+I should see always see four silver coins plus one gold.
 
 ![example.png](screenshots/example.png)
 
