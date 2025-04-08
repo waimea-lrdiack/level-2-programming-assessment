@@ -14,9 +14,10 @@
  * Make the coins position random
  * Allow players to move the coins to the left
  * If a coin is in the first grid it can then be removed
- * Make sure the coins cannot be moved into a grid another coin is in or go over another coin.
+ * Make sure the coins cannot be moved into a grid another coin is in.
  * Allow the user to move the coin as far as they want
- * Check for errors: negative numbers, overlap
+ * Stop errors from happening such as coins overlapping, moving a decimal amount of spaces, moving negative spaces, moving the coins out of the grid.
+ * To do: Make it so that users cannot skip their turn
  * To do: declare a winner if gold coin is removed
  * =====================================================================
  */
@@ -45,8 +46,8 @@ fun main() {
     println()
     showGrids(grids)
 
-    val player1 = getPlayerName("Player 1, what is your name? ") // gets users name
-    val player2 = getPlayerName("Player 2, what is your name? ")
+    val player1 = getString("Player 1, what is your name? ") // gets users name
+    val player2 = getString("Player 2, what is your name? ")
 
     val players = listOf(player1, player2)
     var currentPlayerNumber = 0  // Track the current player (0 = Player 1, 1 = Player 2)
@@ -122,7 +123,7 @@ fun placeCoins(gridList: MutableList<String>, coins: List<String>) {
     }
 }
 
-fun getPlayerName(prompt: String): String {
+fun getString(prompt: String): String {
     var userInput: String
 
     while(true) {
@@ -170,8 +171,7 @@ fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: Str
         return
     }
 
-    println("$currentPlayer, how many spaces do you want to move $coinName?")
-    val movedSpaces = readln().toIntOrNull() ?: return // gets the number of grids the player wants to move the coin
+    val movedSpaces = getSpacesToMove("$currentPlayer, how many spaces do you want to move $coinName?  ")
 
     val newPosition = coinIndex - movedSpaces // since the coin moves left taking away the coins original position by the moved spaces gives the new position.
 
@@ -188,8 +188,29 @@ fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: Str
     }
 
 
-    gridList[coinIndex] = EMPTY // The coin will be removed from its original spot in the list so it can be moved to a new one
+    gridList[coinIndex] = EMPTY // The coin will be removed from its original spot in the list so,it can be moved to a new one
     gridList[newPosition] = coinName  // Place the coin into the new position
     println("Moved $coinName to Grid $coinIndex")
 
+}
+
+fun getSpacesToMove(prompt: String): Int {
+    var intValue: Int?
+
+    while(true) {
+        val userInput = getString(prompt)
+        intValue = userInput.toIntOrNull()
+
+        if (intValue != null) {
+            if (intValue < 1) {
+                println("Please enter a number more than zero")
+                continue
+            }
+            else {
+                break
+            }
+        }
+    }
+
+    return intValue!!
 }

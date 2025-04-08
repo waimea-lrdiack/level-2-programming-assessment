@@ -26,7 +26,7 @@ I should see always see four silver coins plus one gold.
 
 ## Testing Grid Display
 
-I need to make sure that coins and grid are displayed so that the user can see whats is going on
+I need to make sure that coins and grid are displayed so that the user can see what is going on
 
 ### Test Data To Use
 
@@ -72,7 +72,7 @@ I will also test that the coin is removed and the user will not be asked how man
 I expect that when the user is asked how many spaces they can move the coin, if the user is to enter a number that will cause the coin to move off the grid they will be given the message "You cannot move past grid 1" and the coin will not move.
 I expect that when the user is to make the coins pass over another they will be given the message "Cannot move another coin is in the way at grid X" and the coin will not move.
 I expect that when the user is to enter a decimal or a negative number they will be asked to enter a valid number.
-I expect that the user will not be asked to how many spaces to move the coin and it will instead be removed if the chosen coin is in the first grid.
+I expect that the user will not be asked to how many spaces to move the coin, and it will instead be removed if the chosen coin is in the first grid.
 
 ---
 
@@ -92,6 +92,21 @@ I expect that the game will correctly select which player is to move when invali
 
 ---
 
+## Winning the game
+
+When the user is to remove the gold coin, the game will end and the player to remove the coin will be declared the winner.
+
+### Test Data To Use
+
+I will do two different tests, one where player 1 is to remove the gold coin, and one where the 2nd player is to remove the coin.
+The user to remove the coin will then be declared the winner and the game will stop,
+
+### Expected Test Result
+
+I expect that when player 1 is to remove the coin, they will be declared the winner and the game will end.
+I expect that when player 2 is to remove the coin, they will be declared the winner and the game will end.
+
+---
 
 
 ## Example Test Name
