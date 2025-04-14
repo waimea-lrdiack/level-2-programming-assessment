@@ -34,6 +34,9 @@ const val EMPTY = ""
 var containGold = true
 
 fun main() {
+    println("THE OLD GOLD GAME".bgYellow())
+    println("=======================================================================================")
+    println()
     println("Setting up grids")
 
     val grids = setUpGrids()
@@ -50,7 +53,7 @@ fun main() {
     println()
     showGrids(grids)
 
-    println("Welcome to the Old Gold Game!!!")
+    println("Welcome to the Old Gold Game!!!".bgYellow())
     println()
     println("=======================================================================================")
     println()
@@ -63,10 +66,10 @@ fun main() {
     val player2 = getString("Player 2, what is your name? ")
     println()
 
-    val players = listOf(player1, player2)
+    val players = listOf(player1.blue(), player2.red())
     var currentPlayerNumber = 0  // Track the current player (0 = Player 1, 1 = Player 2)
 
-    println("Good luck $player1 and $player2")
+    println("Good luck ${player1.blue()} and ${player2.red()}")
     println()
     println("Enter 1 to move Coin 1")
     println()
@@ -121,16 +124,16 @@ fun main() {
         }
     }
     println()
-    println("The winner is...")
+    println("The winner is...".yellow())
     println()
-    println("$currentPlayer!")
+    println("$currentPlayer!!!")
     println()
-    println("Thank you for playing $player1 and $player2")
+    println("Thank you for playing ${player1.blue()} and ${player2.red()}")
 }
 
 fun setUpGrids(): MutableList<String> {
-    val gridList = mutableListOf<String>()
-    for (grids in 1..NUMGRIDS) gridList.add(EMPTY) // makes every grid in the list empty
+    val gridList = mutableListOf<String>() // the list is created
+    for (grids in 1..NUMGRIDS) gridList.add(EMPTY) // adds empty grids
     return gridList
 }
 
@@ -165,10 +168,9 @@ fun getString(prompt: String): String {
     var userInput: String
 
     while(true) {
-        print(prompt)
-
-        userInput = readln()
-        if (userInput.isNotBlank()) break
+        print(prompt) // prints the question
+        userInput = readln() // gets data from the user
+        if (userInput.isNotBlank()) break // the user will have to enter something for the loop to break
     }
 
     return userInput
@@ -179,23 +181,24 @@ fun getUserInput(): Char {
 
     while (true) {
         println("What coin do you want to move?: ")
-        val input = readln()
-        // typed nothing? try again
-        if (input.isBlank()) continue
-        // grab the first letter
-        val choice = input.uppercase().first()
+        val input = readln() // gets data from the user
 
-        // check for a valid option
-        if (validChoices.contains(choice)) return choice
+        if (input.isBlank()) continue // makes sure the user types something
+
+        val choice = input.uppercase().first() // takes the first character the user inputted
+
+        if (validChoices.contains(choice)) return choice // if the user had entered one of the valid choices the loop will end
     }
 }
 
 fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: String): Boolean {
+    // returns true when the user has made a valid move so that it can become the other players turn
+    // returns false when the user has made an invalid move so that the users turn is not skipped
 
     val coinIndex = gridList.indexOf(coinName) // Find the coin's position
 
 
-    if (coinIndex == -1) { // since when a coin is removed its index becomes -1, this error message is played
+    if (coinIndex == -1) { // when a coin is removed its index becomes -1, this error message is played
         println("Error: $coinName is not found on the board!")
         return false
     }
@@ -241,10 +244,10 @@ fun getSpacesToMove(prompt: String): Int {
 
     while(true) {
         val userInput = getString(prompt)
-        intValue = userInput.toIntOrNull()
+        intValue = userInput.toIntOrNull() // will get a number from the user
 
         if (intValue != null) {
-            if (intValue < 1) {
+            if (intValue < 1) { // makes sure the user is to move the coin at least 1 grid
                 println("Please enter a number more than zero")
                 continue
             }
@@ -258,11 +261,11 @@ fun getSpacesToMove(prompt: String): Int {
 }
 
 fun checkGold(gridList: MutableList<String>) {
-    if (gridList.contains("Gold")) {
+    if (gridList.contains("Gold")) { // checks whether the gold coin is still on the board
         containGold = true
     }
 
-    if (!gridList.contains("Gold")) {
+    if (!gridList.contains("Gold")) { // containGold becomes false when the gold coin is removed which causes the game to end
         containGold = false
     }
 }
