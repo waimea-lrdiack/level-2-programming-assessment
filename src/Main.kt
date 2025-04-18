@@ -34,7 +34,7 @@ const val EMPTY = ""
 var containGold = true
 
 fun main() {
-    println("THE OLD GOLD GAME".bgYellow())
+    println("THE OLD GOLD GAME".black().bgYellow())
     println("=======================================================================================")
     println()
     println("Setting up grids")
@@ -53,13 +53,14 @@ fun main() {
     println()
     showGrids(grids)
 
-    println("Welcome to the Old Gold Game!!!".bgYellow())
+    println("Welcome to the Old Gold Game!!!".black().bgYellow())
     println()
     println("=======================================================================================")
+    println("How to play:")
     println()
     println("To win this game you will need to be the player to remove the gold coin from the grid")
-    println("However, for this to be done the gold coin will need to be moved into the first grid")
-    println("coins cannot pass over one another or move into a grid that another coin is already in")
+    println("To remove a coin the coin needs to be moved into the first grid")
+    println("Coins cannot pass over one another or move into a grid that another coin is already in")
     println()
 
     val player1 = getString("Player 1, what is your name? ") // gets users name
