@@ -26,7 +26,8 @@
  * Constant vales used to define the key values used throughout the device
  * NUMGRIDS is the number of grids in the game
  * EMPTY is for every empty grid in the game
- * containGold is for making sure the gold coin is still in the grid, if it isn't the game will end
+ *
+ * containGold is a var for making sure the gold coin is still in the grid, if it isn't in the grid containGold becomes false and the game will end
  */
 
 const val NUMGRIDS = 15
@@ -113,9 +114,9 @@ fun main() {
                 break
             }
             currentPlayerNumber = (currentPlayerNumber + 1) % 2
-            // Switch to the other player when the turn is done (%2 makes it so that the current player will only be able to alternate between 0,1)
+            // Switch to the other player when the turn is done (%2 makes it so that the current player number will only be able to alternate between 0,1)
             println()
-            showGrids(grids) // shows the grids so the players will see changes
+            showGrids(grids) // shows the grids so the players will see change that has been made
             println()
         }
 
@@ -132,15 +133,28 @@ fun main() {
     println("Thank you for playing ${player1.blue()} and ${player2.red()}")
 }
 
+/**
+ * setUpGrids creates the gridList and then fills the list with EMPTY for the number of grids (NUMGRIDS)
+ * The purpose of this function is to set up the game board
+ */
 fun setUpGrids(): MutableList<String> {
     val gridList = mutableListOf<String>() // the list is created
     for (grids in 1..NUMGRIDS) gridList.add(EMPTY) // adds empty grids
     return gridList
 }
 
+/**
+ * The purpose of showGrids is to display the game board to the users whenever the function is used
+ * The grids will be displayed like this:
+ * +--------+--------+--------+--------+
+ * |        |        |        |        |
+ * +--------+--------+--------+--------+
+ * It will also display the coins inside the grids
+ * If coins are to be moved, when this function is used it will show the updated version of the board
+ */
 fun showGrids(gridList: List<String>) {
 
-    val gridWidth = 8  // sets the width of the grids (set to 11 due to Gold Coin taking up 9 spaces)
+    val gridWidth = 8  // sets the width of the grids
 
     val divider = "+${"-".repeat(gridWidth)}".repeat(gridList.size) + "+" // repeats the +----------+ pattern
 
@@ -150,14 +164,19 @@ fun showGrids(gridList: List<String>) {
     println(divider)
 }
 
+/**
+ * The purpose of the placeCoins function is to add the coins into a random spot on the board each time the game is run
+ */
+
 fun placeCoins(gridList: MutableList<String>, coins: List<String>) {
 
     val randomize = (gridList.indices).shuffled()  // shuffles the list, so that the coin is placed into a random grid
 
     for ((index, coin) in coins.withIndex()) {
-        val place = randomize[index] // place will make another value be put into the random position
+        val place = randomize[index] // each coin within the coins list is given a random place in the grid, using this val places the coin
 
-        // due to lists starting at 0, the grid the coin is placed in will be one more than its index, gridNum is used to show the user which grid the coin is in.
+        // due to lists starting at 0, the grid the coin is placed in will be one more than its index.
+        // gridNum is used to show the user which grid the coin is in.
         val gridNum = place +1
 
         println("+++ Placing $coin in grid $gridNum")
@@ -165,6 +184,11 @@ fun placeCoins(gridList: MutableList<String>, coins: List<String>) {
     }
 }
 
+/**
+ * The purpose of getString is to obtain a string from the user.
+ * getString is used so that whatever a user is to enter a number it can be converted into a string. It also makes sure what they have entered is not left blank.
+ * This function is used when getting the players names.
+ */
 fun getString(prompt: String): String {
     var userInput: String
 
@@ -177,6 +201,11 @@ fun getString(prompt: String): String {
     return userInput
 }
 
+/**
+ * The purpose of getUserInput is to know which coin the player wants to move or remove from the board
+ * This function is like a menu where if the user is to enter 1, coin 1 is moved, if 2, coin 2 is moved, if G, the gold coin is moved, etc.
+ * Then when the user is to enter which coin they would like to move their choice will be returned to the main function
+ */
 fun getUserInput(): Char {
     val validChoices = "1234GQ"
 
@@ -192,12 +221,15 @@ fun getUserInput(): Char {
     }
 }
 
+/**
+ * The purpose of moveCoin is to move or remove the chosen coin
+ * It also checks whether the move made was valid or not, which is why this function is a Boolean.
+ * Returns true when the user has made a valid move so that it can become the other players turn
+ * Returns false when the user has made an invalid move so that the users turn is not skipped
+ */
 fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: String): Boolean {
-    // returns true when the user has made a valid move so that it can become the other players turn
-    // returns false when the user has made an invalid move so that the users turn is not skipped
 
     val coinIndex = gridList.indexOf(coinName) // Find the coin's position
-
 
     if (coinIndex == -1) { // when a coin is removed its index becomes -1, this error message is played
         println("Error: $coinName is not found on the board!")
@@ -207,7 +239,6 @@ fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: Str
     if (coinIndex == 0) { // if the coin is in grid 1 ( 0 in the list), their position becomes empty
         gridList[coinIndex] = EMPTY
         println("$coinName has been removed!")
-
         return true
     }
 
@@ -216,9 +247,9 @@ fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: Str
         return false
     }
 
-    val movedSpaces = getSpacesToMove("$currentPlayer, how many spaces do you want to move $coinName?  ")
+    val movedSpaces = getSpacesToMove("$currentPlayer, how many spaces do you want to move $coinName?  ") // uses the getSpacesToMove function to find how many spaces the coin is being moved
 
-    val newPosition = coinIndex - movedSpaces // since the coin moves left taking away the coins original position by the moved spaces gives the new position.
+    val newPosition = coinIndex - movedSpaces // since the coin moves left taking away the coins original position by the moved spaces gives the new position
 
     if (newPosition < 0) { // prevents coins from moving past grid 1
         println("You can't move past Grid 1!")
@@ -240,6 +271,11 @@ fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: Str
    return true
 }
 
+/**
+ * The purpose of getSpacesToMove is to know how many spaces the user will want to move the chosen coin
+ * The user will need to enter an Integer that is > 0 for the loop within this function to break so that the coins are always moved in the correct direction
+ * The Integer that has been entered will then be returned to the moveCoin function for the coin to be moved
+ */
 fun getSpacesToMove(prompt: String): Int {
     var intValue: Int?
 
@@ -257,10 +293,14 @@ fun getSpacesToMove(prompt: String): Int {
             }
         }
     }
-
     return intValue!!
 }
 
+/**
+ * The purpose of this function is to check whether the gold coin is still on the board
+ * When this function is used it will either keep the containGold variable as true or change it to false
+ * when it changes to false the loop in the main function breaks causing the game to end and a winner is declared
+ */
 fun checkGold(gridList: MutableList<String>) {
     if (gridList.contains("Gold")) { // checks whether the gold coin is still on the board
         containGold = true
