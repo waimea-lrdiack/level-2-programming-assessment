@@ -62,7 +62,7 @@ The program stores data using variables, where:
 - [x] Variable names **begin with lowercase**
 - [x] Naming is consistent, either **camelCase or snake_case**
 - [?] Variables are **scoped appropriately** (global or local to a function)
-- [?] **Global** variables are only used if **genuinely needed**
+- [x] **Global** variables are only used if **genuinely needed**
 
 The program uses functions appropriately, where:
 - [?] At least one uses **parameters** to pass data into it
@@ -72,8 +72,8 @@ The program uses functions appropriately, where:
 ### Program Documentation
 
 The program code is well-commented:
-- [no...I think] **JavaDoc Block comments** are used at the top of each **file** and **function**
-- [maybe] Comments accurately describe the **function and behaviour** of the code:
+- [x check though] **JavaDoc Block comments** are used at the top of each **file** and **function**
+- [x] Comments accurately describe the **function and behaviour** of the code:
   - [ ] Defining the **purpose** of functions / key blocks of code
   - [ ] Explaining the **reason** (the '**why**') of key parts of the code
   - [ ] Defining function **parameters** and/or **return values**
