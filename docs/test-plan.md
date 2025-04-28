@@ -20,7 +20,7 @@ I will run the game multiple times to see how the coins get placed
 
 ### Expected Test Result
 
-I should see always see four silver coins plus one gold.
+I should see always see five coins called Coin 1, Coin 2, Coin 3, Coin 4 and, Gold, each coin should be in a random grid and not in the same grid as another coin.
 
 ---
 

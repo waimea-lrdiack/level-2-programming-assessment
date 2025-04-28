@@ -14,13 +14,35 @@ I will run the game multiple times to see how the coins get placed
 
 ### Expected Test Result
 
-I should see always see four silver coins plus one gold.
+I should see always see five coins called Coin 1, Coin 2, Coin 3, Coin 4 and, Gold, each coin should be in a random grid and not in the same grid as another coin
 
-![example.png](screenshots/example.png)
+![200DTD_CoinPlacementTest.png](../../Testing%20Plan/200DTD_CoinPlacementTest.png)
+![200DTD_CoinPlacementTest2.png](../../Testing%20Plan/200DTD_CoinPlacementTest2.png)
+
+In my first test each coin was placed into a grid like I expected, I then ran the code again to check whether their placement was random or not.
+As seen in the second image the coins were placed into different grids as the previous test.
+I then ran the code again to make sure that their placement was definitely random and each time most of the coins were in different grids from the previous and not in the same grids as another coin.
+
+---
+
+## Testing Grid Display
+
+I need to make sure that coins and grid are displayed so that the user can see the game board and the changes that
+
+### Test Data To Use
+
+I will run the game multiple times to see how the coins get placed
+
+### Expected Test Result
+
+The grids will have every coin fitting nicely inside and the corners of each grid will have + that lines up with the sides |
+
+example.png
 
 Comment on test result. Comment on test result. Comment on test result. Comment on test result. Comment on test result. Comment on test result.
 
 ---
+
 
 ## Example Test Name
 
