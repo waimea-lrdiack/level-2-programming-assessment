@@ -165,7 +165,7 @@ fun showGrids(gridList: List<String>) {
 
     val divider = "+--------".repeat(gridList.size) + "+" // creates the +--------+ pattern for the border of the grid
     println(divider)
-    for (grid in gridList) print("| ${grid.padEnd(8)} ") // will print out |     |    | each time the | will line up with the + above and below it, the coins will then fit between the |   | to be displayed as a grid to the user
+    for (grid in gridList) print("| ${grid.padEnd(6)} ") // will print out |     |    | each time the | will line up with the + above and below it, the coins will then fit between the |   | to be displayed as a grid to the user
     println("|")
     println(divider)
 }

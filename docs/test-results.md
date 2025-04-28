@@ -35,11 +35,11 @@ I will run the game multiple times to see how the coins get placed
 
 ### Expected Test Result
 
-The grids will have every coin fitting nicely inside and the corners of each grid will have + that lines up with the sides |
+The grids will have every coin fitting nicely inside and the corners of each grid will have the + line up with the sides |, I expect the coins to fit within the sides |   |
 
-example.png
+![200DTD_GridDisplayTest.png](../../Testing%20Plan/200DTD_GridDisplayTest.png)
 
-Comment on test result. Comment on test result. Comment on test result. Comment on test result. Comment on test result. Comment on test result.
+When I was to run the code the grid appeared in the +--------+ | | way that I had expected that it would line up and when the coins were placed inside the grids were not moved in any way and the coins fitted nicely inside.
 
 ---
 

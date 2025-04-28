@@ -30,11 +30,11 @@ I need to make sure that coins and grid are displayed so that the user can see w
 
 ### Test Data To Use
 
-I will run the game multiple times to see how the coins get placed
+I will run the code once to check that the grid looks as expected and how the coins are placed within the grid
 
 ### Expected Test Result
 
-The grids will have every coin fitting nicely inside and the corners of each grid will have + that lines up with the sides |
+The grids will have every coin fitting nicely inside and the corners of each grid will have the + line up with the sides |, I expect the coins to fit within the sides |   | 
 
 ---
 
