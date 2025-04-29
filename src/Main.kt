@@ -64,73 +64,73 @@ fun main() {
     println("Coins cannot pass over one another or move into a grid that another coin is already in")
     println()
 
-//   val player1 = getString("Player 1, what is your name? ") // gets users name
-//   val player2 = getString("Player 2, what is your name? ")
-//   println()
+  val player1 = getString("Player 1, what is your name? ") // gets users name
+  val player2 = getString("Player 2, what is your name? ")
+  println()
 
-//   val players = listOf(player1.blue(), player2.red())
-//   var currentPlayerNumber = 0  // Track the current player (0 = Player 1, 1 = Player 2)
+  val players = listOf(player1.blue(), player2.red())
+  var currentPlayerNumber = 0  // Track the current player (0 = Player 1, 1 = Player 2)
 
-//   println("Good luck ${player1.blue()} and ${player2.red()}")
-//   println()
-//   println("Enter 1 to move Coin 1")
-//   println()
-//   println("Enter 2 to move Coin 2")
-//   println()
-//   println("Enter 3 to move Coin 3")
-//   println()
-//   println("Enter 4 to move Coin 4")
-//   println()
-//   println("Enter G to move the Gold Coin")
-//   println()
-//   println("Enter Q to quit the game")
-//   println()
+  println("Good luck ${player1.blue()} and ${player2.red()}")
+  println()
+  println("Enter 1 to move Coin 1")
+  println()
+  println("Enter 2 to move Coin 2")
+  println()
+  println("Enter 3 to move Coin 3")
+  println()
+  println("Enter 4 to move Coin 4")
+  println()
+  println("Enter G to move the Gold Coin")
+  println()
+  println("Enter Q to quit the game")
+  println()
 
-//   var currentPlayer: String
+  var currentPlayer: String
 
-//   while (true) {
-//       currentPlayer = players[currentPlayerNumber]
+  while (true) {
+      currentPlayer = players[currentPlayerNumber]
 
-//       println("It's $currentPlayer's turn!") // Show whose turn it is
+      println("It's $currentPlayer's turn!") // Show whose turn it is
 
-//       val playerInput = getUserInput()
+      val playerInput = getUserInput()
 
-//       if (playerInput == 'Q') break // Quit game
-//       val coinToMove = when (playerInput) {
-//           '1' -> "Coin 1"
-//           '2' -> "Coin 2"
-//           '3' -> "Coin 3"
-//           '4' -> "Coin 4"
-//           'G' -> "Gold"
-//           else -> continue
-//       }
+      if (playerInput == 'Q') break // Quit game
+      val coinToMove = when (playerInput) {
+          '1' -> "Coin 1"
+          '2' -> "Coin 2"
+          '3' -> "Coin 3"
+          '4' -> "Coin 4"
+          'G' -> "Gold"
+          else -> continue
+      }
 
-//       val moveSuccessful = moveCoin(grids, coinToMove, currentPlayer)
+      val moveSuccessful = moveCoin(grids, coinToMove, currentPlayer)
 
-//       if (moveSuccessful) {
-//           checkGold(grids) // Check if the Gold coin is still on the board
+      if (moveSuccessful) {
+          checkGold(grids) // Check if the Gold coin is still on the board
 
-//           if (!containGold) { // when containGold is false break
-//               break
-//           }
-//           currentPlayerNumber = (currentPlayerNumber + 1) % 2
-//           // Switch to the other player when the turn is done (%2 makes it so that the current player number will only be able to alternate between 0,1)
-//           println()
-//           showGrids(grids) // shows the grids so the players will see change that has been made
-//           println()
-//       }
+          if (!containGold) { // when containGold is false break
+              break
+          }
+          currentPlayerNumber = (currentPlayerNumber + 1) % 2
+          // Switch to the other player when the turn is done (%2 makes it so that the current player number will only be able to alternate between 0,1)
+          println()
+          showGrids(grids) // shows the grids so the players will see change that has been made
+          println()
+      }
 
-//       else {
-//           println("Invalid move, try again.")
-//           println()
-//       }
-//   }
-//   println()
-//   println("The winner is...".yellow())
-//   println()
-//   println("$currentPlayer!!!")
-//   println()
-//   println("Thank you for playing ${player1.blue()} and ${player2.red()}")
+      else {
+          println("Invalid move, try again.")
+          println()
+      }
+  }
+  println()
+  println("The winner is...".yellow())
+  println()
+  println("$currentPlayer!!!")
+  println()
+  println("Thank you for playing ${player1.blue()} and ${player2.red()}")
 }
 
 /**
@@ -153,16 +153,6 @@ fun setUpGrids(): MutableList<String> {
  * If coins are to be moved, when this function is used it will show the updated version of the board
  */
 fun showGrids(gridList: List<String>) {
-
-    //val gridWidth = 8  // sets the width of the grids
-//
-    //val divider = "+${"-".repeat(gridWidth)}".repeat(gridList.size) + "+" // repeats the +----------+ pattern
-//
-    //println(divider)
-    //for (grid in gridList) print("| ${grid.padEnd(gridWidth - 2)} ") // will print a line that looks like this |      | so that the coins fit in between and the line add up with the +
-    //println("|")
-    //println(divider)
-
     val divider = "+--------".repeat(gridList.size) + "+" // creates the +--------+ pattern for the border of the grid
     println(divider)
     for (grid in gridList) print("| ${grid.padEnd(6)} ") // will print out |     |    | each time the | will line up with the + above and below it, the coins will then fit between the |   | to be displayed as a grid to the user
@@ -269,7 +259,7 @@ fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: Str
         }
     }
 
-    // this happens when there are no issues
+    // this will happen if they are not removing a coin and a valid move has been made
     gridList[coinIndex] = EMPTY // The coin will be removed from its original spot in the list so,it can be moved to a new one
     gridList[newPosition] = coinName  // Place the coin into the new position
     println("Moved $coinName to Grid ${newPosition + 1}")
