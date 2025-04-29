@@ -59,7 +59,6 @@ I will test moving multiple coins around and seeing what happens when they are t
 
 I expect the coin to disappear from the grid it is currently in and move into another grid.
 In my first test when I tried to move the coin instead of moving one space to the left, another one of the same coin was made, it continued to duplicate itself and removed other coins in its way
-
 ![DTD testing 1.gif](images/DTD testing 1.gif)
 
 In my next test I then added some code to make the grid the coin was originally in empty before moving the coin
@@ -67,9 +66,23 @@ In my next test I then added some code to make the grid the coin was originally 
 
 ---
 
-This solved the issue of the coin duplicating itself however I still hadn't solved the issue of the coin moving into grids other coins are in and removing them
+This solved the issue of the coin duplicating itself, however I still hadn't solved the issue of the coin moving into grids other coins are in
 ![DTD testing 2.gif](images/DTD testing 2.gif)
 ---
+
+When I was to bring a coin into the first grid this error occurred because I was bringing the coin out of the boundary
+![200DTD_RemovingCoinFail.gif](images/200DTD_RemovingCoinFail.gif)
+---
+
+I solved this issue by editing my code so that when I was to move a coin in the first grid its grid would become EMPTY
+![200DTD_RemovingCoinFixedCode.png](images/200DTD_RemovingCoinFixedCode.png)
+---
+
+However, when I was to try and move the removed coin a new error occurred due to that coin being no longer in the grid
+![200DTD_movingRemovedCoinFail.png](images/200DTD_movingRemovedCoinFail.png)
+---
+
+I solved this issue by making it so that when the player is to try and move the removed coin they would be told the coin is no longer in the grid, this was done by making every removed coin in coinIndex -1 so that when you are to choose to move a removed coin the if statement for coinIndex = -1 will force the player to try again
 
 ## Example Test Name
 

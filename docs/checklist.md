@@ -92,9 +92,9 @@ The program has been tested using:
 ### Program Code
 
 Program flexibility and maintainability is aided by:
-- [?] **Constants** being used to define key values, and used throughout the program
+- [x] **Constants** being used to define key values, and used throughout the program
 - [?] Variable values being **derived at run-time** (from other variables / constants)
-- [?] Literal values only being used if they **make sense**, and they don't impact program flexibility
+- [maybe] Literal values only being used if they **make sense**, and they don't impact program flexibility
 
 Program flexibility and maintainability is aided by good program structure:
 - [x] Conditions, branching, loops and functions are used **effectively**

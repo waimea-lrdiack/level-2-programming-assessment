@@ -232,11 +232,11 @@ fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: Str
         return false
     }
 
-    if (coinIndex == 0) { // if the coin is in grid 1 ( 0 in the list), their position becomes empty
-        gridList[coinIndex] = EMPTY
-        println("$coinName has been removed!")
-        return true
-    }
+   if (coinIndex == 0) { // if the coin is in grid 1 ( 0 in the list), their position becomes empty
+       gridList[coinIndex] = EMPTY
+       println("$coinName has been removed!")
+       return true
+   }
 
     if (gridList[coinIndex - 1] != EMPTY) {  // Check if the left grid is occupied and if so won't allow them to move the coin
         println("Cannot move $coinName, Grid $coinIndex is already occupied.")
