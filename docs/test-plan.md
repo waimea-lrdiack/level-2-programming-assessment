@@ -30,7 +30,7 @@ I need to make sure that coins and grid are displayed so that the user can see w
 
 ### Test Data To Use
 
-I will run the code once to check that the grid looks as expected and how the coins are placed within the grid
+I will run the code once to check that the grid looks as expected and how the coins are placed within the grid (not outside the boundary)
 
 ### Expected Test Result
 
@@ -48,7 +48,7 @@ If the coin is in the first grid it will be removed from the grid.
 I will test moving multiple coins around and seeing what happens when they are to move into another coin and move when on the first grid.
 ### Expected Test Result
 
-I expect the coin to disappear from the grid it is currently in and move into another grid.
+I expect the coin to disappear from the grid it is currently in and move into another grid. If the coin is in the first grid I expect it to be removed from the game.
 
 ---
 

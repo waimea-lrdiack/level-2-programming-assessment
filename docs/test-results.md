@@ -23,14 +23,14 @@ I should see always see five coins called Coin 1, Coin 2, Coin 3, Coin 4 and, Go
 ![200DTD_CoinPlacementTest2.png](images/200DTD_CoinPlacementTest2.png)
 
 In my first test each coin was placed into a grid like I expected, I then ran the code again to check whether their placement was random or not.
-As seen in the second image the coins were placed into different grids as the previous test.
-I then ran the code again to make sure that their placement was definitely random and each time most of the coins were in different grids from the previous and not in the same grids as another coin.
+As seen in the second image, the coins were placed into different grids as the previous test.
+I then ran the code again to make sure that their placement was definitely random, and each time most of the coins were in different grids from the previous and not in the same grids as another coin.
 
 ---
 
 ## Testing Grid Display
 
-I need to make sure that coins and grid are displayed so that the user can see the game board and the changes that
+I need to make sure that the coins and grids are displayed so that the user can see the game board and the changes that
 
 ### Test Data To Use
 
@@ -38,18 +38,18 @@ I will run the game multiple times to see how the coins get placed
 
 ### Expected Test Result
 
-The grids will have every coin fitting nicely inside and the corners of each grid will have the + line up with the sides |, I expect the coins to fit within the sides |   |
+The grids will have every coin fitting nicely inside, and the corners of each grid will have the + line up with the sides |, I expect the coins to fit within the sides |   |
 
 ![200DTD_GridDisplayTest.png](images/200DTD_GridDisplayTest.png)
 
-When I was to run the code the grid appeared in the +--------+ | | way that I had expected that it would line up and when the coins were placed inside the grids were not moved in any way and the coins fitted nicely inside.
+When I was to run the code, the grid appeared in the +--------+ | | way that I had expected that it would line up, and when the coins were placed inside, the grids were not moved in any way and the coins fitted nicely inside.
 
 ---
 
 ## Moving the coin one space
 
 I need to see whether the coins are able to move into another grid and not move into grids that other coins are already in.
-If the coin is in the first grid it will be removed from the grid.
+If the coin is in the first grid, it will be removed from the grid.
 
 ### Test Data To Use
 
@@ -57,7 +57,10 @@ I will test moving multiple coins around and seeing what happens when they are t
 
 ### Expected Test Result
 
-I expect the coin to disappear from the grid it is currently in and move into another grid.
+I expect the coin to disappear from the grid it is currently in and move into another grid. If the coin is in the first grid I expect it to be removed from the game.
+
+---
+
 In my first test when I tried to move the coin instead of moving one space to the left, another one of the same coin was made, it continued to duplicate itself and removed other coins in its way
 ![DTD testing 1.gif](images/DTD testing 1.gif)
 
@@ -66,23 +69,29 @@ In my next test I then added some code to make the grid the coin was originally 
 
 ---
 
-This solved the issue of the coin duplicating itself, however I still hadn't solved the issue of the coin moving into grids other coins are in
+This solved the issue of the coin duplicating itself however, I still hadn't solved the issue of the coin moving into grids other coins are in
 ![DTD testing 2.gif](images/DTD testing 2.gif)
 ---
 
-When I was to bring a coin into the first grid this error occurred because I was bringing the coin out of the boundary
+I solved this issue by adding in another if branch so that when there is another coin in the grid to the left of the coin being moved an error message will appear and the user will be asked to try again.
+I tested moving multiple different coins into each other, and everytime the error message was played.
+
+---
+
+When I was to remove a coin from the first grid this error occurred because I was bringing the coin out of the boundary
 ![200DTD_RemovingCoinFail.gif](images/200DTD_RemovingCoinFail.gif)
 ---
 
-I solved this issue by editing my code so that when I was to move a coin in the first grid its grid would become EMPTY
+I solved this issue by editing my code so that when I was to remove a coin, its grid would become EMPTY
 ![200DTD_RemovingCoinFixedCode.png](images/200DTD_RemovingCoinFixedCode.png)
 ---
 
-However, when I was to try and move the removed coin a new error occurred due to that coin being no longer in the grid
+However, in my next test when I was to try and move the removed coin, a new error occurred due to that coin being no longer in the grid
 ![200DTD_movingRemovedCoinFail.png](images/200DTD_movingRemovedCoinFail.png)
 ---
 
-I solved this issue by making it so that when the player is to try and move the removed coin they would be told the coin is no longer in the grid, this was done by making every removed coin in coinIndex -1 so that when you are to choose to move a removed coin the if statement for coinIndex = -1 will force the player to try again
+I solved this issue by making it so that when the player is to try and move the removed coin they would be told the coin is no longer in the grid. 
+This was done by making every removed coin have a coinIndex of -1 so that when you are to choose to move a removed coin the if branch for coinIndex = -1 will force the player to try again
 
 ## Example Test Name
 

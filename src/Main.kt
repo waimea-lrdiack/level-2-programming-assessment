@@ -245,7 +245,7 @@ fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: Str
 
     val movedSpaces = getSpacesToMove("$currentPlayer, how many spaces do you want to move $coinName?  ") // uses the getSpacesToMove function to find how many spaces the coin is being moved
 
-    val newPosition = coinIndex - movedSpaces // since the coin moves left taking away the coins original position by the moved spaces gives the new position
+    val newPosition = coinIndex - movedSpaces // since the coin moves left, the original position (coinIndex) - the number of spaces moved, gives the new position
 
     if (newPosition < 0) { // prevents coins from moving past grid 1
         println("You can't move past Grid 1!")
