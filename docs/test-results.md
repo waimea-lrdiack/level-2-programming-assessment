@@ -130,8 +130,18 @@ However, I had not expected for the coins to be able to pass over one another or
 
 ---
 
-This error was solved by...
+This error was solved by making it so that if any grids are not empty from the coin's original position to its new position, there will be an error message played and they will be asked to go again.
+I also tested whether the user could enter decimals, a negative number, or a string for the number of spaces they want to move the coin.
 
+![200DTD_MovingConMultipleSpaces2.gif](images/200DTD_MovingConMultipleSpaces2.gif)
+
+---
+
+As I had expected the error of coins moving over one another or moving into another coin's grid was fixed, I had not expected the user to be able to enter negative numbers or the game to stop from decimals and words.
+I had expected the users to be asked to enter the number of spaces to move again if they were to enter an invalid number.
+This issue was later solved by changing the number of spaces to an IntOrNull instead of just an integer so that when the user enters a null they will be asked to enter again. This did not solve the negative number of spaces to move so I had to enter an if branch so that if the spaces to move is less than 1 the user will be asked to enter a number more than zero.
+
+---
 ## Example Test Name
 
 Example test description. Example test description.Example test description. Example test description.Example test description. Example test description.

@@ -288,8 +288,10 @@ fun getSpacesToMove(prompt: String): Int {
                 break
             }
         }
+
+        println("Invalid input, please enter a valid number")
     }
-    return intValue!!
+    return intValue
 }
 
 /**
