@@ -57,7 +57,7 @@ I will test moving multiple coins around and seeing what happens when they are t
 
 ### Expected Test Result
 
-I expect the coin to disappear from the grid it is currently in and move into another grid. If the coin is in the first grid I expect it to be removed from the game.
+I expect the coin to disappear from the grid it is currently in and move into the grid to its left. If the coin is in the first grid I expect it to be removed from the game.
 
 ---
 
@@ -74,7 +74,9 @@ This solved the issue of the coin duplicating itself however, I still hadn't sol
 ---
 
 I solved this issue by adding in another if branch so that when there is another coin in the grid to the left of the coin being moved an error message will appear and the user will be asked to try again.
-I tested moving multiple different coins into each other, and everytime the error message was played.
+I tested moving multiple different coins into each other, and everytime the error message was played as seen in the below GIF.
+
+![200DTD_CoinInTheWayForMove.gif](images/200DTD_CoinInTheWayForMove.gif)
 
 ---
 
@@ -86,12 +88,49 @@ I solved this issue by editing my code so that when I was to remove a coin, its 
 ![200DTD_RemovingCoinFixedCode.png](images/200DTD_RemovingCoinFixedCode.png)
 ---
 
-However, in my next test when I was to try and move the removed coin, a new error occurred due to that coin being no longer in the grid
+However, in my next test when I was to try and move the removed coin (invalid data the user could enter), a new error occurred due to that coin being no longer in the grid
 ![200DTD_movingRemovedCoinFail.png](images/200DTD_movingRemovedCoinFail.png)
 ---
 
-I solved this issue by making it so that when the player is to try and move the removed coin they would be told the coin is no longer in the grid. 
-This was done by making every removed coin have a coinIndex of -1 so that when you are to choose to move a removed coin the if branch for coinIndex = -1 will force the player to try again
+I solved this issue by making it so that when the player is to try and move the removed coin, they would be told the coin is no longer in the grid. 
+This was done by making every removed coin have a coinIndex of -1 so that when you are to choose to move a removed coin, the if branch for coinIndex = -1 will force the player to try again
+
+---
+
+
+## Choosing how many spaces to move the coin
+
+I need to make sure that the user will be able to choose how many spaces they move the coin without passing another coin while not going out of the grids.
+The coins will only be able to move to the first grid where if they are then moved will be removed from the game.
+
+### Test Data To Use
+
+I will test moving a coins more than 20 grids (the number of grids),
+move a coin within the number of grids while going past grid 1,
+move multiple coins around testing that they won't be able to pass over another,
+and move a coin a decimal and a negative amount of grids.
+I will also test that the coin is removed and the user will not be asked how many spaces to move the coin, if it is in the first grid.
+
+
+### Expected Test Result
+
+I expect that when the user is asked how many spaces they can move the coin, if the user is to enter a number that will cause the coin to move off the grid they will be given the message "You cannot move past grid 1" and the coin will not move.
+I expect that when the user is to make the coins pass over another, they will be given the message "Cannot move another coin is in the way at grid X" and the coin will not move.
+I expect that when the user is to enter a decimal or a negative number, they will be asked to enter a valid number.
+I expect that the user will not be asked how many spaces to move the coin, and it will instead be removed if the chosen coin is in the first grid.
+
+---
+
+In my first test I attempted valid moves from the player, moving the coin out of the boundary and, invalid moves of coins passing over one another or into a grid another coin was in.
+
+![200DTD_MovingCoinMultipleSpaces1.gif](images/200DTD_MovingCoinMultipleSpaces1.gif)
+
+As I had expected, the valid moves allowed the coins to move multiple spaces to the left, when the user was to move a coin out of the boundary the correct error message was played.
+However, I had not expected for the coins to be able to pass over one another or into a grid another coin because when the coin is to move one space the error message had played and I had not considered multiple spaces making a difference.
+
+---
+
+This error was solved by...
 
 ## Example Test Name
 
