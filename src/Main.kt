@@ -1,3 +1,4 @@
+import kotlin.system.exitProcess
 
 /**
  * =====================================================================
@@ -95,7 +96,7 @@ fun main() {
 
       val playerInput = getUserInput()
 
-      if (playerInput == 'Q') break // Quit game
+      if (playerInput == 'Q') exitProcess(0) // Quit game
       val coinToMove = when (playerInput) {
           '1' -> "Coin 1"
           '2' -> "Coin 2"
@@ -181,9 +182,9 @@ fun placeCoins(gridList: MutableList<String>, coins: List<String>) {
 }
 
 /**
- * The purpose of getString is to obtain a string from the user.
- * getString is used so that whatever a user is to enter a number it can be converted into a string. It also makes sure what they have entered is not left blank.
- * This function is used when getting the players names.
+ * The purpose of getString is to get a string from the user.
+ * getString is used so that whatever a user is to enter an integer it can be converted into a string. It also makes sure what they have entered is not left blank.
+ * This function is used to get the players' names
  */
 fun getString(prompt: String): String {
     var userInput: String
@@ -200,7 +201,7 @@ fun getString(prompt: String): String {
 /**
  * The purpose of getUserInput is to know which coin the player wants to move or remove from the board
  * This function is like a menu where if the user is to enter 1, coin 1 is moved, if 2, coin 2 is moved, if G, the gold coin is moved, etc.
- * Then when the user is to enter which coin they would like to move their choice will be returned to the main function
+ * Then, when the user is to enter which coin they would like to move, their choice will be returned to the main function
  */
 fun getUserInput(): Char {
     val validChoices = "1234GQ"
@@ -221,13 +222,13 @@ fun getUserInput(): Char {
  * The purpose of moveCoin is to move or remove the chosen coin
  * It also checks whether the move made was valid or not, which is why this function is a Boolean.
  * Returns true when the user has made a valid move so that it can become the other players turn
- * Returns false when the user has made an invalid move so that the users turn is not skipped
+ * Returns false when the user has made an invalid move so that the users, turn is not skipped
  */
 fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: String): Boolean {
 
     val coinIndex = gridList.indexOf(coinName) // Find the coin's position
 
-    if (coinIndex == -1) { // when a coin is removed its index becomes -1, this error message is played
+    if (coinIndex == -1) { // when a coin is removed, its index becomes -1; then this error message is played
         println("Error: $coinName is not found on the board!")
         return false
     }
@@ -267,6 +268,7 @@ fun moveCoin(gridList: MutableList<String>, coinName: String, currentPlayer: Str
    return true
 }
 
+
 /**
  * The purpose of getSpacesToMove is to know how many spaces the user will want to move the chosen coin
  * The user will need to enter an Integer that is > 0 for the loop within this function to break so that the coins are always moved in the correct direction
@@ -297,7 +299,7 @@ fun getSpacesToMove(prompt: String): Int {
 /**
  * The purpose of this function is to check whether the gold coin is still on the board
  * When this function is used it will either keep the containGold variable as true or change it to false
- * when it changes to false the loop in the main function breaks causing the game to end and a winner is declared
+ * when it changes to false the loop in the main function breaks, causing the game to end and a winner is declared
  */
 fun checkGold(gridList: MutableList<String>) {
     if (gridList.contains("Gold")) { // checks whether the gold coin is still on the board

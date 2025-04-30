@@ -139,9 +139,77 @@ I also tested whether the user could enter decimals, a negative number, or a str
 
 As I had expected the error of coins moving over one another or moving into another coin's grid was fixed, I had not expected the user to be able to enter negative numbers or the game to stop from decimals and words.
 I had expected the users to be asked to enter the number of spaces to move again if they were to enter an invalid number.
-This issue was later solved by changing the number of spaces to an IntOrNull instead of just an integer so that when the user enters a null they will be asked to enter again. This did not solve the negative number of spaces to move so I had to enter an if branch so that if the spaces to move is less than 1 the user will be asked to enter a number more than zero.
+This issue was later solved by changing the number of spaces to an IntOrNull instead of just an integer so that when the user enters a null, they will be asked to enter again. This did not solve the negative number of spaces to move so I had to enter an if branch so that if the spaces to move is less than 1 the user will be asked to enter a number more than zero.
+
+![200DTD_MovingConMultipleSpaces3.gif](images/200DTD_MovingConMultipleSpaces3.gif)
 
 ---
+
+## Player names and taking turns
+
+I need to make sure that for this game to be functional, the players can enter their names and when it is their turn it will be displayed on screen.
+I also need to make sure that the game correctly knows which players turn it is so that if an invalid move is done that player will not skip their turn
+
+### Test Data To Use
+I will test once entering player names and that they are displayed when it is their turn, the players will not be able to leave their name blank.
+I will test entering invalid data such as moving the coin out of the grid, having the coins on the same grid or pass over another, or not choosing a coin, to make sure that the players can not skip their turn and move onto the next.
+
+### Expected Test Result
+
+I expect the player names to be displayed when it is their turn, and that it will not be entered blank.
+I expect that the game will correctly select which player is to move when invalid data is used on a players turn so that players cannot skip their turn.
+
+---
+
+I attempted to enter nothing and spaces for the users names, I then tried entering invalid data, such as moving a coin out of the grid, moving a coin into another coin, not choosing any coin to move, choosing an invalid number of spaces to move.
+The names had worked as expected so that the user could not leave their name blank and could use numbers in their name. When the user was to not choose a coin to move or made an invalid number of spaces to move a coin an error message was played, and they would go again, however, if they were to make a coin move out of the grid or pass over another coin or move into the grid of another coin the error message would play for them to go again, and their turn would be skipped
+
+![200DTD_PlayersTakingTurns1.gif](images/200DTD_PlayersTakingTurns1.gif)
+
+---
+I discovered that the players turn was being skipped for an invalid move while still having the error message played all occured in the moveCoin function, this is because the code returned to the main function after the users turn was made.
+I solved this issue by changing the moveCoin function into a boolean so that for the users turn to end they would have to enter a valid move which would return true, otherwise it would retrun false and they would have to go again.
+
+![200DTD_PlayersTakingTurns2.png](images/200DTD_PlayersTakingTurns2.png)
+
+As seen in the above image the players turn was no longer skipped when they were to make the coins pass over another or move into the grid of another.
+
+---
+
+## Winning the game
+
+When the user is to remove the gold coin, the game will end and the player to remove the coin will be declared the winner.
+If a user was to quit no winner is declared.
+
+### Test Data To Use
+
+I will do two different tests, one where player 1 is to remove the gold coin, and one where the 2nd player is to remove the coin.
+The user to remove the coin will then be declared the winner and the game will stop. I will also do another 2 tests where each player is to quit the game.
+
+### Expected Test Result
+
+I expect that when player 1 is to remove the coin, they will be declared the winner and the game will end.
+I expect that when player 2 is to remove the coin, they will be declared the winner and the game will end.
+I expect the game to stop and the code to stop running when any player is to quit the game.
+---
+
+![200DTD_RemovingGoldCoin1.png](images/200DTD_RemovingGoldCoin1.png)g
+
+![200DTD_RemovingGoldCoin2.png](images/200DTD_RemovingGoldCoin2.png)
+
+As expected, when player 1 was to remove the gold coin, they were declared the winner, and when player 2 was to remove the gold coin, they were declared the winner.
+However, if a user was to enter the quit option (Q) then they were declared the winner  
+
+quit.png
+
+---
+
+I solved this issue by making it so that instead of Q making the code break from the main loop, it instead exited the whole process, now no winner can be declared.
+
+quitSolved.png
+
+---
+
 ## Example Test Name
 
 Example test description. Example test description.Example test description. Example test description.Example test description. Example test description.
