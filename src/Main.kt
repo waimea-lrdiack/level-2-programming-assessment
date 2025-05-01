@@ -97,7 +97,8 @@ fun main() {
       val playerInput = getUserInput()
 
       if (playerInput == 'Q') exitProcess(0) // Quit game
-      val coinToMove = when (playerInput) {
+
+      val coinToMove = when (playerInput) { // checks which coin has been selected to move
           '1' -> "Coin 1"
           '2' -> "Coin 2"
           '3' -> "Coin 3"
@@ -293,7 +294,7 @@ fun getSpacesToMove(prompt: String): Int {
 
         println("Invalid input, please enter a valid number")
     }
-    return intValue
+    return intValue!!
 }
 
 /**

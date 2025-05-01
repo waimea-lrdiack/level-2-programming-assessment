@@ -25,16 +25,17 @@ I should see always see five coins called Coin 1, Coin 2, Coin 3, Coin 4 and, Go
 In my first test each coin was placed into a grid like I expected, I then ran the code again to check whether their placement was random or not.
 As seen in the second image, the coins were placed into different grids as the previous test.
 I then ran the code again to make sure that their placement was definitely random, and each time most of the coins were in different grids from the previous and not in the same grids as another coin.
+The coins were always within the 15 grids so, they had not gone out of the boundary.
 
 ---
 
 ## Testing Grid Display
 
-I need to make sure that the coins and grids are displayed so that the user can see the game board and the changes that
+I need to make sure that the coins and grids are displayed so that the user can see the game board and the changes that are made throughout the game.
 
 ### Test Data To Use
 
-I will run the game multiple times to see how the coins get placed
+I will run the game multiple times to see whether the grid keeps it expected shape when coins are placed into different grids
 
 ### Expected Test Result
 
@@ -53,7 +54,7 @@ If the coin is in the first grid, it will be removed from the grid.
 
 ### Test Data To Use
 
-I will test moving multiple coins around and seeing what happens when they are to move into another coin and move when on the first grid.
+I will test moving multiple coins around and see what happens when they are to move into another coin and move when on the first grid.
 
 ### Expected Test Result
 
@@ -105,8 +106,9 @@ The coins will only be able to move to the first grid where if they are then mov
 
 ### Test Data To Use
 
-I will test moving a coins more than 20 grids (the number of grids),
+I will test moving coins more than 20 grids (the number of grids),
 move a coin within the number of grids while going past grid 1,
+I will test moving a coin into grid 1, the boundary
 move multiple coins around testing that they won't be able to pass over another,
 and move a coin a decimal and a negative amount of grids.
 I will also test that the coin is removed and the user will not be asked how many spaces to move the coin, if it is in the first grid.
@@ -154,6 +156,7 @@ I also need to make sure that the game correctly knows which players turn it is 
 I will test once entering player names and that they are displayed when it is their turn, the players will not be able to leave their name blank.
 I will test entering invalid data such as moving the coin out of the grid, having the coins on the same grid or pass over another, or not choosing a coin, to make sure that the players can not skip their turn and move onto the next.
 
+
 ### Expected Test Result
 
 I expect the player names to be displayed when it is their turn, and that it will not be entered blank.
@@ -184,7 +187,7 @@ If a user was to quit no winner is declared.
 ### Test Data To Use
 
 I will do two different tests, one where player 1 is to remove the gold coin, and one where the 2nd player is to remove the coin.
-The user to remove the coin will then be declared the winner and the game will stop. I will also do another 2 tests where each player is to quit the game.
+The user to remove the coin will then be declared the winner and the game will stop. I will also do another 2 tests where each player is to quit the game and see whether the game will still declare a winner.
 
 ### Expected Test Result
 
@@ -193,36 +196,27 @@ I expect that when player 2 is to remove the coin, they will be declared the win
 I expect the game to stop and the code to stop running when any player is to quit the game.
 ---
 
-![200DTD_RemovingGoldCoin1.png](images/200DTD_RemovingGoldCoin1.png)g
+![200DTD_RemovingGoldCoin1.png](images/200DTD_RemovingGoldCoin1.png)
+
+---
 
 ![200DTD_RemovingGoldCoin2.png](images/200DTD_RemovingGoldCoin2.png)
 
 As expected, when player 1 was to remove the gold coin, they were declared the winner, and when player 2 was to remove the gold coin, they were declared the winner.
-However, if a user was to enter the quit option (Q) then they were declared the winner  
-
-quit.png
+However, if a user was to enter the quit option (Q) then they were declared the winner.
 
 ---
 
-I solved this issue by making it so that instead of Q making the code break from the main loop, it instead exited the whole process, now no winner can be declared.
-
-quitSolved.png
+![200DTD_QuittingGame.png](images/200DTD_QuittingGame.png)
 
 ---
 
-## Example Test Name
+I solved this issue by making it so that instead of Q making the code break from the main loop, it instead exited the whole process, now no winner can be declared and the Q button serves its purpose.
 
-Example test description. Example test description.Example test description. Example test description.Example test description. Example test description.
+![200DTD_QuittingGame2.png](images/200DTD_QuittingGame2.png)
 
-### Test Data Used
-
-Details of test data. Details of test data. Details of test data. Details of test data. Details of test data. Details of test data. Details of test data.
-
-### Test Result
-
-![example.png](screenshots/example.png)
-
-Comment on test result. Comment on test result. Comment on test result. Comment on test result. Comment on test result. Comment on test result.
+I tested doing this with each player at the first move and a few moves in and the game always was stopped without a winner, the code is now working how I had expected it to.
 
 ---
+
 

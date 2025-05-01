@@ -45,7 +45,7 @@ The program has been tested and there is documented evidence that:
   - [x] game setup
   - [x] player moves
   - [x] players taking turns
-  - [n] scoring (if any)
+  - [none] scoring (if any)
   - [x] players winning
   - [x] final feedback (if appropriate)
 - [x] **Valid (expected) data** has been used to test **all data inputs**
@@ -58,7 +58,7 @@ The program has been tested and there is documented evidence that:
 ### Program Code
 
 The program stores data using variables, where:
-- [m] Variable **names are well-chosen** (relating to their purpose)
+- [x] Variable **names are well-chosen** (relating to their purpose)
 - [x] Variable names **begin with lowercase**
 - [x] Naming is consistent, either **camelCase or snake_case**
 - [x] Variables are **scoped appropriately** (global or local to a function)
@@ -82,7 +82,7 @@ The program code is well-commented:
 
 The program has been tested using:
 - [x] A test plan **prepared in advance** of the coding
-- [!!!] A test plan that **defines test data values** to be used
+- [x] A test plan that **defines test data values** to be used
 - [x] Test values that cover **boundary** (limit / edge) cases
 
 ---
@@ -93,7 +93,7 @@ The program has been tested using:
 
 Program flexibility and maintainability is aided by:
 - [x] **Constants** being used to define key values, and used throughout the program
-- [???] Variable values being **derived at run-time** (from other variables / constants)
+- [x] Variable values being **derived at run-time** (from other variables / constants)
 - [x] Literal values only being used if they **make sense**, and they don't impact program flexibility
 
 Program flexibility and maintainability is aided by good program structure:
@@ -111,7 +111,7 @@ The program code:
 ### Program Testing
 
 The program has been tested to be **robust**:
-- [!!! ] With a **comprehensive and thorough** test plan
-- [ ] Testing **regularly** throughput development, allowing **time for debugging**
-- [ ] Using test values that cover **invalid** (unexpected) cases
-- [ ] Resulting in a program that **copes appropriately** with invalid inputs
+- [x] With a **comprehensive and thorough** test plan
+- [x] Testing **regularly** throughput development, allowing **time for debugging**
+- [x] Using test values that cover **invalid** (unexpected) cases
+- [x] Resulting in a program that **copes appropriately** with invalid inputs

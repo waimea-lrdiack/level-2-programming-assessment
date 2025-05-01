@@ -20,21 +20,21 @@ I will run the game multiple times to see how the coins get placed
 
 ### Expected Test Result
 
-I should see always see five coins called Coin 1, Coin 2, Coin 3, Coin 4 and, Gold, each coin should be in a random grid and not in the same grid as another coin.
+I should see always see five coins called Coin 1, Coin 2, Coin 3, Coin 4 and, Gold, each coin should be in a random grid and not in the same grid as another coin
 
 ---
 
 ## Testing Grid Display
 
-I need to make sure that coins and grid are displayed so that the user can see what is going on
+I need to make sure that the coins and grids are displayed so that the user can see the game board and the changes that are made throughout the game
 
 ### Test Data To Use
 
-I will run the code once to check that the grid looks as expected and how the coins are placed within the grid (not outside the boundary)
+I will run the game multiple times to see whether the grid keeps it expected shape when coins are placed into different grids
 
 ### Expected Test Result
 
-The grids will have every coin fitting nicely inside and the corners of each grid will have the + line up with the sides |, I expect the coins to fit within the sides |   | 
+The grids will have every coin fitting nicely inside, and the corners of each grid will have the + line up with the sides |, I expect the coins to fit within the sides |   |
 
 ---
 
@@ -95,16 +95,17 @@ I expect that the game will correctly select which player is to move when invali
 ## Winning the game
 
 When the user is to remove the gold coin, the game will end and the player to remove the coin will be declared the winner.
+If a user was to quit no winner is declared.
 
 ### Test Data To Use
 
 I will do two different tests, one where player 1 is to remove the gold coin, and one where the 2nd player is to remove the coin.
-The user to remove the coin will then be declared the winner and the game will stop,
+The user to remove the coin will then be declared the winner and the game will stop. I will also do another 2 tests where each player is to quit the game.
 
 ### Expected Test Result
 
 I expect that when player 1 is to remove the coin, they will be declared the winner and the game will end.
 I expect that when player 2 is to remove the coin, they will be declared the winner and the game will end.
-
+I expect the game to stop and the code to stop running when any player is to quit the game.
 ---
 

@@ -10,10 +10,10 @@ The project is written in the [Kotlin](https://kotlinlang.org) programming langu
 - Modifying data stored in collections
 - Storing multi-dimensional data in collections
 - Creating functions that use parameters and/or return values
+- Creating functions that use True/False return values
 - Using non-trivial string manipulation
-- Using additional non-core libraries
 
-** EDIT LIST ABOVE TO MATCH YOUR PROJECT**
+
 
 ---
 
