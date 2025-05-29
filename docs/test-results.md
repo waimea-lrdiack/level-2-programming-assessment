@@ -72,6 +72,7 @@ In my next test I then added some code to make the grid the coin was originally 
 
 This solved the issue of the coin duplicating itself however, I still hadn't solved the issue of the coin moving into grids other coins are in
 ![DTD testing 2.gif](images/DTD testing 2.gif)
+
 ---
 
 I solved this issue by adding in another if branch so that when there is another coin in the grid to the left of the coin being moved an error message will appear and the user will be asked to try again.
@@ -83,14 +84,17 @@ I tested moving multiple different coins into each other, and everytime the erro
 
 When I was to remove a coin from the first grid this error occurred because I was bringing the coin out of the boundary
 ![200DTD_RemovingCoinFail.gif](images/200DTD_RemovingCoinFail.gif)
+
 ---
 
 I solved this issue by editing my code so that when I was to remove a coin, its grid would become EMPTY
 ![200DTD_RemovingCoinFixedCode.png](images/200DTD_RemovingCoinFixedCode.png)
+
 ---
 
 However, in my next test when I was to try and move the removed coin (invalid data the user could enter), a new error occurred due to that coin being no longer in the grid
 ![200DTD_movingRemovedCoinFail.png](images/200DTD_movingRemovedCoinFail.png)
+
 ---
 
 I solved this issue by making it so that when the player is to try and move the removed coin, they would be told the coin is no longer in the grid. 
@@ -170,6 +174,7 @@ The names had worked as expected so that the user could not leave their name bla
 ![200DTD_PlayersTakingTurns1.gif](images/200DTD_PlayersTakingTurns1.gif)
 
 ---
+
 I discovered that the players turn was being skipped for an invalid move while still having the error message played all occured in the moveCoin function, this is because the code returned to the main function after the users turn was made.
 I solved this issue by changing the moveCoin function into a boolean so that for the users turn to end they would have to enter a valid move which would return true, otherwise it would retrun false and they would have to go again.
 
@@ -194,6 +199,7 @@ The user to remove the coin will then be declared the winner and the game will s
 I expect that when player 1 is to remove the coin, they will be declared the winner and the game will end.
 I expect that when player 2 is to remove the coin, they will be declared the winner and the game will end.
 I expect the game to stop and the code to stop running when any player is to quit the game.
+
 ---
 
 ![200DTD_RemovingGoldCoin1.png](images/200DTD_RemovingGoldCoin1.png)
